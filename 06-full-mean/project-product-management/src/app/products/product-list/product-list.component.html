@@ -1,0 +1,25 @@
+<section class="newPadding">
+  <fieldset class="col-md-10 blackness">
+    <div class="row align">
+      <div class="col">
+        <h1>Products List</h1>
+      </div>
+    </div>
+    <div class="row homePadding">
+      <div
+        class="align col-md-5 blackness2 buttonHolder"
+        *ngFor="let product of products"
+        (click)="onSelect(product)"
+        [routerLink]="product._id"
+      >
+        <img class="imageHolder" src="{{ product.image }}" alt="a picture of a {{ product.title }}">
+        <h3>{{ product.title }}</h3>
+        <p>{{ product.price }}</p>
+        <div class="row buttonHolder" (click)="onEvent($event)">
+          <button class="btn btn-outline-warning two" [routerLink]="['edit', product._id]">Edit</button>
+          <button class="btn btn-outline-danger two" (click)="onDelete(product)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</section>

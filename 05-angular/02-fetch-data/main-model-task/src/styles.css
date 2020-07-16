@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+.one{height: 15em; width: 20em; margin-left: 1em; border-radius: 5em;}
+.two{display: inline;}
+.three{padding-left: 6em;}
+.four{margin-left: 6em;}
+.five{list-style-type: none;}
+.six{margin-left: 4em;}
+.seven{width: 69em; height: 29em; margin-left: 2em;}
+.eight{width: 29em; height: 69em; margin-left: 2em;}
+.nine{margin-left: 9em;}
+.align{text-align: center;}
+.greeness{color: #07ff58;}
+.purpleness{color: blueviolet;}
+.orangeness{color: rgb(255, 140, 0);}
+.pinkness{color: #fa01f8;}
+.blueness{color: #0019ff;}
+/* You can add global styles to this file, and also import other style files */

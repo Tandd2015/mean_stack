@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Hunting Github" content="Hunting Github Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Hunting Github</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <style>
+            .box{border: 2px solid black; height: 200px; width: 700px; margin-top: 30em; text-align: center;}
+            #two{text-align: center; padding-left: 7em;}
+        </style>
+        <script>
+            $(document).ready( () => {
+                $('#one').click( () => {
+                    const htmlInput= $('#in').first();
+                    const valueOf=  htmlInput.val().trim();
+                    $('.gitUserContent').first().hide();
+                    htmlInput.val('');
+                    if(valueOf){
+                        return search(valueOf);
+                    }
+                    Errors('No Git Username was provided...');
+                });
+            });
+            
+            function search(value) {
+                $('#errorWindow').hide();
+                new Promise( (resolve, reject) => {
+                    $.get({
+                        url: `https://api.github.com/users/${value}`,
+                        success: resolve,
+                        error: reject,
+                    });
+                })
+                    .then(createUser)
+                    .catch(error => {
+                        console.log(error);
+                        Errors(`Something went wrong, ensure the user you are requesting exists: ${value}`)
+                });
+            }
+
+            function createUser(user){
+                console.log('user', user);
+                const idCard = `
+                <div #id='card' class='card'>
+                    <img class='img avatar' src="${user.avatar_url}" alt="avatar">
+                    <p>Login: ${user.login}</p>
+                    <p>Name: ${user.name || 'N/A'}</p>
+                    <p>Repos: ${user.public_repos}</p>
+                    <p>Gists: ${user.public_gists}</p>
+                </div>
+                `;
+                $('.gitUserContent').first().empty().show().append(idCard);
+            }
+            function Errors(errorMessage){
+                $('#errorWindow')
+                .empty()
+                .show()
+                .append(`<p>${errorMessage}</p>`);
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                <h1>Hunting Github</h1>
+                <div class="form-row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                        <input type="text" id="in" class="form-control" placeholder="Git Username">
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" id="one" class="btn btn-outline-success">Git It</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row" id="two">
+                <div class="gitUserContent">
+
+                </div>
+            </div>
+            <div id="errorWindow">
+
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

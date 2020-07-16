@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MainModelTask</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+      />
+  </head>
+  <body class="container">
+    <section class="selectedTask">
+      <fieldset>
+        <div class="row">
+          <div class="col-md-8">
+            <legend class="four">Display One Pokemon</legend>
+            <div class="row nine">
+              <p class="col-md-3 inline">ID:</p>
+              <p class="col-md-3 inline">{{ newPokemon?.id }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Name: </p>
+              <p class="col-md-3">{{ newPokemon?.name }}</p>
+            </div><!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            <div class="row nine">
+              <p class="col-md-3">Height: </p>
+              <p class="col-md-3">{{ newPokemon?.height }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Weight: </p>
+              <p class="col-md-3">{{ newPokemon?.weight }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Front Sprite: </p>
+              <div class="col-md-3"><img src="{{ newPokemon?.sprites.front_default }}"></div> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Back Sprite: </p>
+              <div class="col-md-3"><img src="{{ newPokemon?.sprites.back_default }}"></div> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </section>
+  </body>
+</html>

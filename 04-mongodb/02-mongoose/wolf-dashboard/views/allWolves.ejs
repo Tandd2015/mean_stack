@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Wolf" content="Wolf Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Wolf</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <nav class="navbar navbar-dark bg-dark five">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">All Wolves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/wolfs/new">New Wolf</a>
+                </li>
+            </nav>
+            <main>
+                <div class="row">
+                    <img class="seven" src="img/wolf1.jpeg" alt="A picture of Wolf">
+                </div>
+                <div class="row six">
+                    <div class="col-md-11">
+                        <table class="table table-striped table-dark">
+                            <thead>
+                                <tr>
+                                <th scope="col">Id:</th>
+                                <th scope="col">Name:</th>
+                                <th scope="col">Pack Position:</th>
+                                <th scope="col">Strengths:</th>
+                                <th scope="col">Weaknesses:</th>
+                                <th scope="col">Actions:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if(allWolves) { %>
+                                    <% for (const wolf of allWolves) { %>
+                                        <tr>
+                                            <th scope="row"><%= wolf._id %></th>
+                                            <td><%= wolf.name%></td>
+                                            <td><%= wolf.pack_postion%></td>
+                                            <td><% for (const strength of wolf.strengths) { %> <%= strength %>, <% } %></td>
+                                            <td><% for (const weakness of wolf.weaknesses) { %> <%= weakness %>, <% } %></td>
+                                            <td><a href="/wolfs/<%= wolf._id %>"> Show Wolf </a> | <a href="/wolfs/edit/<%=wolf._id %>"> Edit Wolf </a> | <a href="/wolfs/destroy/<%=wolf._id %>"> Delete Wolf </a></td>
+                                        </tr>
+                                    <% } %>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

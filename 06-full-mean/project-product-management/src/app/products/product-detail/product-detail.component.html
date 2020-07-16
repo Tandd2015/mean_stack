@@ -1,0 +1,35 @@
+<section>
+  <fieldset class="">
+    <div class="row newPadding">
+      <div class="col-md-8 blackness four">
+          <legend class="four">Displaying One Product</legend>
+          <div class="row nine">
+            <img class="imageHolder" src="{{ product?.image }}" alt="a picture of a {{ product?.title }}">
+          </div>
+          <div class="row nine">
+            <p class="col-md-3 inline">ID:</p>
+            <p class="col-md-3 inline">{{ product?._id }}</p>
+          </div>
+          <div class="row nine">
+            <p class="col-md-3">product Title: </p>
+            <p class="col-md-3">{{ product?.title }}</p>
+          </div>
+          <div class="row nine">
+            <p class="col-md-3">Author Name: </p>
+            <p class="col-md-3">{{ product?.price }}</p>
+          </div>
+          <div class="row nine">
+            <p class="col-md-3">Created at: </p>
+            <p class="col-md-3">{{ product?.createdAt }}</p>
+          </div>
+          <div class="row nine">
+            <p class="col-md-3">Updated at: </p>
+            <p class="col-md-3">{{ product?.updatedAt }}</p>
+          </div>
+          <div class="row nine">
+            <button class="btn btn-outline-danger two " [routerLink]="['/products']">Return</button>
+          </div>
+      </div>
+    </div>
+  </fieldset>
+</section>

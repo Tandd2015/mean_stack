@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Taveling traveling.htm template" content="An assignment for coding dojo this template will run the javaScript assignment on you computers web explorer i.e. chrome">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Taveling traveling.htm template</title>
+    </head>
+    <body>
+        <script>
+            var Tigger = {character:"Tigger", greet: function (){console.log("The wonderful thing about Tiggers is Tiggers are wonderful things!")}};
+            var Bees = {character:"Bees", greet: function (){console.log("The wonderful thing about Bees is the Honey they make for mezzzz!")}};
+            var Piglet = {character:"Piglet", greet: function (){console.log("Oh dear no you are here already")}};
+            var WinniethePooh = {character:"Winnie the Pooh", greet: function (){console.log("I love honey")}};
+            var Owl = {character:"Owl", greet: function (){console.log("One.....Two.......Three......crunch")}};
+            var ChristoperRobin = {character:"Christoper Robin", greet: function (){console.log("Have you seen my dearest pooh??????")}};
+            var Rabbit = {character:"Rabbit", greet: function (){console.log("I beat the Turtle I tell you I shoukd have one that race.")}};
+            var Gopher = {character:"Gopher", greet: function (){console.log("Down the hole we go!!!")}};
+            var Kanga = {character:"Kanga", greet: function (){console.log("Hip Hop Hippty Hop!!!")}};
+            var Eeyore = {character:"Eeyore", greet: function (){console.log("I dont feel like doing anything but just chillaxing today sorry anyway!")}};
+            var Heffalumps = {character:"Heffalumps", greet: function (){console.log("If i knew who i was i would have a better greeting promise!")}};
+            // WITH CIRCULAR.....
+            // first row
+            Tigger.north = WinniethePooh; 
+            // second row
+            WinniethePooh.north=ChristoperRobin;
+            WinniethePooh.south = Tigger;
+            WinniethePooh.west=Piglet;   
+            WinniethePooh.east=Bees;
+            
+            Piglet.north=Owl;  
+            Piglet.east = WinniethePooh;  
+            
+            Bees.north=Rabbit;   
+            Bees.west=WinniethePooh;
+            // third row
+            ChristoperRobin.north=Kanga;
+            ChristoperRobin.south=WinniethePooh;
+            ChristoperRobin.west=Owl;
+            ChristoperRobin.east=Rabbit;
+            
+            Owl.south=Piglet;
+            Owl.east=ChristoperRobin;
+            
+            Rabbit.south=Bees;
+            Rabbit.west=ChristoperRobin;
+            Rabbit.east=Gopher;
+            
+            Gopher.west=Rabbit;
+            // fourth row
+            Kanga.north=Eeyore;
+            Kanga.south=ChristoperRobin;
+            // fifth row
+            Eeyore.south=Kanga;
+            Eeyore.east=Heffalumps;
+            
+            Heffalumps.west=Eeyore;
+            // document.body.innerHTML= "<p>"+Tigger.character+"</p>"
+            var player = {
+                location: Tigger
+            };
+            function move(direction){
+                let newPlayerOne= player.location;
+                let newString;
+                if(direction==="north" || direction==="south" || direction==="east" || direction==="west"){
+                    if(typeof newPlayerOne[`${direction}`] !== "undefined"){
+                        newPlayerOne= newPlayerOne[`${direction}`];
+                        player.location= newPlayerOne;
+                        newString=`You are now at ${newPlayerOne.character} 's house`;
+                        console.log(newString);
+                        newPlayerOne.greet();
+                        return newPlayerOne;
+                    }else{
+                        newString="You may not go that way";
+                        console.log(newString);
+                        newPlayerOne.greet();
+                        return newPlayerOne;
+                    }
+                }else{
+                    newString="You may not go that way";
+                    console.log(newString)
+                    newPlayerOne.greet();
+                    return newPlayerOne;
+                };
+            };
+        </script>
+    </body>
+</html>

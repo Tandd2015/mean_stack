@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Wolf" content="Wolf Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Wolf</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <nav class="navbar navbar-dark bg-dark five">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">All Wolves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/wolfs/new">New Wolf</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/wolfs/edit/<%= wolf._id%>">Edit Wolf</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/wolfs/destroy/<%= wolf._id%>">Delete Wolf</a>
+                </li>
+            </nav>
+            <main>
+                <div class="form-group col-md-12">
+        <% if(messages.editWolfError) { %>
+            <% for(let index of messages.editWolfError) { %>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p><%= index %></p>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+                </div>
+                <div class="form-group col-md-12">
+                    <h1>Edit Wolf Form</h1>
+                </div>
+                <form action="/wolfs/<%= wolf._id%>" method="post">
+                    <div class="form-group col-md-12">    
+                        <label class="col-md-4 col-form-label two" for="wolfEditNameInput">Wolf Name: </label>
+                        <input type="text" class="form-control col-md-8 two" id="cssWolfEditNameInput" name="wolfEditNameInput" placeholder="<%= wolf.name %>">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-4 col-form-label two" for="wolfPackPostion">Pack Postion: </label>
+                        <input type="text" class="form-control col-md-8 two" id="cssWolfEditPackPostion" name="wolfEditPackPostion" placeholder="<%= wolf.pack_postion %>">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-4 col-form-label two" for="wolfEditstrengthsInput">Strengths: </label>
+                        <input type="text" class="form-control col-md-8 two" id="cssWolfEditStrengthsInput" name="wolfEditstrengthsInput" placeholder="<% for (const strength of wolf.strengths) { %> <%= strength %> <% } %>">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="col-md-4 col-form-label two" for="wolfEditweaknessesInput">Weaknesses: </label>
+                        <input type="text" class="form-control col-md-8 two" id="cssWolfEditWeaknessesInput" name="wolfEditweaknessesInput" placeholder="<% for (const weakness of wolf.weaknesses) { %> <%= weakness %> <% } %>">
+                    </div>
+                    <div class="left form-group col-md-12 six">
+                        <button type="submit" class="btn btn-primary">Edit Wolf</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

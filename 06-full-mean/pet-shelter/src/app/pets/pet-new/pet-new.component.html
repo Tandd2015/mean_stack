@@ -1,0 +1,82 @@
+<div *ngIf='newErrors.length' class="row six">
+  <ul class="alert alert-danger">
+    <li *ngFor='let error of newErrors'>{{error}}</li>
+  </ul>
+</div>
+<section class="newPet six">
+  <fieldset>
+    <div class="row">
+      <h3>Know of a pet needing a home ?</h3>
+    </div>
+    <form (submit)="onSubmit($event, petForm)" #petForm="ngForm" autocomplete="off"> <!-- $ special variable  # template reference of the representation of the form as an object for app.component.ts - onSubmit(event: Event) -->
+      <div class="form-group row">                                  <!-- onSubmit($event, bookForm) once we have a object representation of the form we pass it in the function -->
+        <label class="col-md-1 col-form-label incline" for="">Pet Name: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="name"
+          [(ngModel)]="pet.name"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label incline" for="">Pet Type: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="type"
+          [(ngModel)]="pet.type"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-1 col-form-label incline" for="">Description: </label>
+        <input
+          class="form-control col-md-5 incline"
+          id=""
+          name="description"
+          [(ngModel)]="pet.description"
+          required
+        />
+      </div>
+      <div class="row">
+        <h1>Skills (Optional): </h1>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label incline" for="">Skill 1: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="skill1"
+          [(ngModel)]="pet.skill1"
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-1 col-form-label incline" for="">Skill 2: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="skill2"
+          [(ngModel)]="pet.skill2"
+        />
+      </div>
+      <div class="form-group row">
+          <label class="col-md-1 col-form-label incline" for="">Skill 3: </label>
+          <input
+            type="text"
+            class="form-control col-md-5 incline"
+            name="skill3"
+            [(ngModel)]="pet.skill3"
+          />
+        </div>
+      <div class="form-group row">
+        <div class="col-md-2 three">
+          <button class="btn btn-outline-success" *ngIf="petForm.valid" >Submit</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary" routerLink="/">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</section>

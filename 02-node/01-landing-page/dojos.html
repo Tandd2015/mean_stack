@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Landing Page" content="Landing Page Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Landing Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <style></style>
+        <script></script>
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <div class="form-group col-md-12">
+                    <h3 class="purpleness registration_holder">Username Information</h3>
+                </div> 
+                <div class="form-group col-md-12">    
+                    <label class="greeness col-md-4 col-form-label incline" for="register_email_input">Email Address: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_email_input" name="register_email_input" placeholder="Email Address">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="greeness col-md-4 col-form-label incline" for="register_username_input">Username: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_username_input" name="register_username_input" placeholder="Username">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 greeness col-form-label incline" for="register_password_input">Password: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_password_input" name="register_password_input" placeholder="Password">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 greeness col-form-label incline" for="register_password_con_input">Confirm PW: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_password_con_input" name="register_password_con_input" placeholder="Re-Enter Password">
+                </div>
+                <div class="form-group col-md-12">
+                    <h3 class="greeness">Personal Information</h3>
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 orangeness col-form-label incline" for="register_first_name_input">First Name: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_first_name_input" name="register_first_name_input" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 orangeness col-form-label incline" for="register_last_name_input">Last Name: </label>
+                    <input type="text" class="form-control registration_holder col-md-5 incline" id="css_register_last_name_input" name="register_last_name_input" placeholder="Last Name">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 orangeness col-form-label incline">Birthday: </label>
+                    <input type="date" class="form-control registration_holder col-md-5 incline" id="css_register_birthday_input" name="register_birthday_input" >
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-2 orangeness col-form-label incline">Address: </label>
+                    <input type="number" class="form-control registration_holder col-md-3 incline" id="css_register_house_apt_input" name="register_house_apt_input" placeholder="House/Apt #">
+                    <input type="text" class="form-control registration_holder col-md-4 incline" id="css_register_street_address_input" name="register_street_address_input" placeholder="Street Address">
+                    <input type="text" class="form-control registration_holder col-md-3 incline" id="css_register_city_input" name="register_city_input" placeholder="City">
+                </div>
+                <div class="form-group col-md-12">
+                    <input type="text" class="form-control registration_holder col-md-2 incline" id="css_register_state_province_input" name="register_state_province_input" placeholder="State/Province">                        
+                    <input type="number" class="form-control registration_holder col-md-2 incline" id="css_register_zipcode_input" name="register_zipcode_input" placeholder="Zip Code">
+                    <input type="text" class="form-control registration_holder col-md-3 incline" id="css_register_country_input" name="register_country_input" placeholder="Country">
+                </div>
+
+                <div class="left form-group col-md-12">
+                    <label for="male">Male</label>
+                    <input type="radio" id="male" name="male" value="male">
+                    <label for="female">Female</label>
+                    <input type="radio" id="female" name="female" value="female">
+                    <label for="other">Other</label>
+                    <input type="radio" id="other" name="other" value="other">
+                </div>
+
+                <div class="left form-group col-md-12">
+                    <label for="desc">A short description about yourself.</label><br>
+                    <textarea id="desc" cols="30" rows="10"></textarea>
+                </div>
+                
+                <div class="left form-group col-md-12">
+                    <label for="lang">Favorite Language:</label>
+                    <select id="lang">
+                        <option value="">JavaScript</option>
+                        <option value="">HTML</option>
+                        <option value="">CSS</option>
+                    </select>
+                </div>
+                
+                <div class="left form-group col-md-12">
+                    <button type="submit" class="btn btn-primary orangeness">Register now</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

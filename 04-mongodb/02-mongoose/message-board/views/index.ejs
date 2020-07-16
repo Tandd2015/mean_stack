@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="The Dojo Message Board" content="The Dojo Message Board Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>The Dojo Message Board</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="col-md-3 two">
+                <h1 class="three">The Dojo Message Board</h1>
+            </div>
+            <nav class="navbar navbar-dark bg-dark five">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+            </nav>
+            <main>
+                <div class="form-group col-md-12">
+                <% if(messages.messageError) { %>
+                    <% for(const index of messages.messageError) { %>
+                        <div class="row">
+                            <div class="col">
+                                <p><%= index %></p>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+                </div>
+                <form action="/message" method="post">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="messageNameInput">Name: </label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="cssMessageNameInput" name="messageNameInput" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="messageMessageInput">Message: </label>
+                        </div>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="cssMessageMessageInput" name="messageMessageInput" placeholder="Message" rows="8" cols="40"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col six">
+                            <button type="submit" class="btn btn-primary btn-lg">Post Message</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <% if(messages.commentError) { %>
+                        <div class="col">
+                            <% for(const index of messages.commentError) { %>
+                                <p><%= index %></p>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+                <%if(messageLibrary.length > 0){%>
+                <div class="nine">
+                    <%for(const messageValue of messageLibrary){%>
+                        <div class="nine">
+                            <p>Author Name: <%=messageValue.author%></p>
+                            <p>Created: <%=messageValue.createdAt.toLocaleDateString('en-US', {day: 'numeric', month: 'numeric', year: 'numeric'})%></p>
+                            <p>Message: <%=messageValue.message%></p>
+                            <div class="nine">
+                                <%if(messageValue.comments.length > 0){%>
+                                    <%for(const commentValue of messageValue.comments){%>
+                                        <div class="nine">
+                                            <p>Author Name: <%=commentValue.author%></p>
+                                            <p>Created: <%=commentValue.createdAt.toLocaleDateString('en-US', {day: 'numeric', month: 'numeric', year: 'numeric'})%></p>
+                                            <p>Message: <%=commentValue.comments%></p>
+                                        </div>
+                                    <%}%>
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="row nine">
+                            <form class="" action="/comment/<%=messageValue.id%>" method="post">
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label for="commentNameInput">Name: </label>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" id="cssCommentNameInput" name="commentNameInput" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <label for="commentCommentInput">Comment: </label>
+                                    </div>
+                                    <div class="col">
+                                        <textarea class="form-control" id="cssCommentCommentInput" name="commentCommentInput" placeholder="Comment" rows="8" cols="40"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary btn-lg six">Post Comment</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    <%}%>
+                </div>
+                <%}%>
+            </main>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

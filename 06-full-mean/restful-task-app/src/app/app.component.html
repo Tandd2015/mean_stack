@@ -1,0 +1,178 @@
+<div class="row">
+  <div *ngIf='taskzErrors.length' class="row six">
+    <ul class="alert alert-danger">
+      <li *ngFor='let error of taskzErrors'>{{ error }}</li>
+    </ul>
+  </div>
+  <button class="btn btn-outline-success two" (click)='onGetTaskz(taskz)'>Show All Tasks</button>
+</div>
+
+<section class="taskz" id="one" *ngIf='isShowedx'>
+  <h3>These Taskz need to be completed!</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <!-- <th>ID</th> -->
+            <th scope="col">Title</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let taskx of taskz"
+            (click)='onSelectz(taskx)'
+            [routerLink]="['taskz',taskx._id]"
+          >
+            <td hidden scope="row">{{ taskx._id }}</td>
+            <td>{{ taskx.title }}</td>
+            <td (click)='onEventz($event)'>
+              <button class="btn btn-outline-primary two" (click)='onSelectz(taskx)' [routerLink]="['taskz',taskx._id]">Show</button>
+              <button class="btn btn-outline-warning two" (click)='onDeletez(taskx)'>Delete</button>
+              <button class="btn btn-outline-danger two" [routerLink]="[taskx._id, 'edit']">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="selectedPet" *ngIf='isAuthedx===true'>
+  <fieldset>
+    <div class="row">
+      <div class="col-md-8">
+        <legend class="four">Displaying One Task</legend>
+        <div class="row nine">
+          <p class="col-md-4">Task Title: </p>
+          <p class="col-md-3">{{ selectedTaskz?.title }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Description: </p>
+          <p class="col-md-3">{{ selectedTaskz?.description }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Created At: </p>
+          <p class="col-md-3">{{ selectedTaskz?.createdAt }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Updated At: </p>
+          <p class="col-md-3">{{ selectedTaskz?.updatedAt }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Completed Count: </p>
+          <p class="col-md-3">{{ selectedTaskz?.completed }}</p>
+        </div>
+        <div *ngIf="selectedTaskz?.noteOne" class="row nine">
+          <p class="col-md-4">Task Note One: </p>
+          <p class="col-md-3">{{ selectedTaskz?.noteOne }}</p>
+        </div>
+        <div *ngIf="selectedTaskz?.noteTwo" class="row nine">
+          <p class="col-md-4">Task Note Two: </p>
+          <p class="col-md-3">{{ selectedTaskz?.noteTwo }}</p>
+        </div>
+        <div *ngIf="selectedTaskz?.noteThree" class="row nine">
+          <p class="col-md-4">Task Note Three: </p>
+          <p class="col-md-3">{{ selectedTaskz?.noteThree }}</p>
+        </div>
+        <div class="row nine">
+          <button class="btn btn-outline-warning" [routerLink]="['edit']">Edit</button>
+          <button class="btn btn-outline-success" (click)='onDeletez(selectedTaskz)'>Remove This Task</button>
+          <button class="btn btn-outline-primary" *ngIf='!isAuthedx' (click)='addCompletez(selectedTaskz)'>Check This Task Complete</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</section>
+
+
+<section>
+  <fieldset>
+  <legend>Create A New Task</legend>
+    <form (submit)="onSubmitz($event, taskForm)" #taskForm="ngForm" autocomplete="off">
+      <!-- {{ taskForm.valid | json}} -->
+      <div class="form-group row">
+        <label
+          for="title"
+          class="col-md-1 col-form-label incline"
+        >Title: </label>
+        <input
+          class="form-control col-md-5 incline"
+          type="text"
+          name="title"
+          [(ngModel)]="taskx.title"
+          minlength="1"
+          maxlength="257"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="description"
+          class="col-md-2 col-form-label incline"
+        >Description: </label>
+        <input
+          class="form-control col-md-5 incline"
+          type="text"
+          name="description"
+          [(ngModel)]="taskx.description"
+          minlength="1"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <legend class="col">Notes (Optional): </legend>
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteOne"
+          class="col-md-1 col-form-label incline"
+        >Note One: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteOne"
+          [(ngModel)]="taskx.noteOne"
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteTwo"
+          class="col-md-1 col-form-label incline"
+        >Note Two: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteTwo"
+          [(ngModel)]="taskx.noteTwo"
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteThree"
+          class="col-md-1 col-form-label incline"
+        >Note Three: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteThree"
+          [(ngModel)]="taskx.noteThree"
+        />
+      </div>
+      <!-- alternate way but less secure -->
+      <!-- <button [hidden]="bookForm.invalid">Submit</button> -->
+      <div class="form-group row">
+        <div class="col-md-2 three">
+          <button class="btn btn-outline-success" *ngIf='taskForm.valid'>Submit</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary" routerLink="/">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</section>
+
+<!-- <app-nav></app-nav>
+<router-outlet></router-outlet> -->

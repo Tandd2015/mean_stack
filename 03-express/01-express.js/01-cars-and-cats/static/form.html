@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Cars and Cats" content="Cars and Cats Assignment for coding dojo.">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cars and Cats</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>New Car Form</h1>
+            <form action="/cars/new" method="post">
+                <div class="form-group col-md-12">    
+                    <label class="col-md-4 col-form-label incline" for="manufacturer_input">Car Manufacturer: </label>
+                    <input type="text" class="form-control manufacturer_holder col-md-5 incline" id="css_manufacturer_input" name="manufacturer_input" placeholder="Car Manufacturer">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 col-form-label incline" for="model_input">Car Model: </label>
+                    <input type="text" class="form-control col-md-5 incline" id="css_model_input" name="model_input" placeholder="Car Model">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 col-form-label incline" for="year_input">Car Year Made: </label>
+                    <input type="text" class="form-control col-md-5 incline" id="css_year_input" name="year_input" placeholder="Car Year Made">
+                </div>
+                <div class="form-group col-md-12">
+                    <label class="col-md-4 col-form-label incline" for="color_input">Car Color: </label>
+                    <input type="text" class="form-control col-md-5 incline" id="css_color_input" name="color_input" placeholder="Car Color">
+                </div>
+                <div class="left form-group col-md-12">
+                    <label for="desc">A short description about the car.</label><br>
+                    <textarea id="desc" cols="30" rows="10"></textarea>
+                </div>
+                <div class="left form-group col-md-12">
+                    <button type="submit" class="btn btn-primary">Submit Car Now</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

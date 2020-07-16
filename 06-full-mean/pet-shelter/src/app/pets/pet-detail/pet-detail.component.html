@@ -1,0 +1,41 @@
+<section class="selectedPet">
+  <fieldset>
+    <div class="row">
+      <div class="col-md-8">
+        <legend class="four">Displaying One Pet</legend>
+        <div class="row nine">
+          <p class="col-md-3 inline">Details about {{ pet?.name }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-3">Pet Type: </p>
+          <p class="col-md-3">{{ pet?.type }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div class="row nine">
+          <p class="col-md-3">Pet Description: </p>
+          <p class="col-md-3">{{ pet?.description }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div *ngIf='pet.skill1' class="row nine">
+          <p class="col-md-3">Pet Skill1: </p>
+          <p class="col-md-3">{{ pet?.skill1 }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div *ngIf='pet.skill2' class="row nine">
+          <p class="col-md-3">Pet Skill2: </p>
+          <p class="col-md-3">{{ pet?.skill2 }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div *ngIf='pet.skill3' class="row nine">
+          <p class="col-md-3">Pet Skill3: </p>
+          <p class="col-md-3">{{ pet?.skill3 }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div class="row nine">
+          <p class="col-md-3">Pet Likes: </p>
+          <p class="col-md-3">{{ pet?.likes }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+        </div>
+        <div class="row nine">
+          <button class="btn btn-outline-warning" [routerLink]="['edit']">Edit </button>
+          <button class="btn btn-outline-success" (click)='onDelete(pet)'>Adopt this pet!</button>
+          <button class="btn btn-outline-primary"  *ngIf='!isAuthed' (click)='addLike(pet)'>Like This Pet </button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</section>

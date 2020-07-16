@@ -1,0 +1,41 @@
+<section class="buttonHolder">
+  <fieldset class="col-md-10 blackness">
+    <h1>Create a New Product</h1>
+    <form (submit)="onSubmit($event, productForm)" #productForm="ngForm" autocomplete="off">
+      <div class="form-group row">
+        <label class="col-md-1 col-form-label incline" for="">Title: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="title"
+          [ngModel]="product.title"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-1 col-form-label incline" for="">Price: </label>
+        <input
+          type="number"
+          class="form-control col-md-5 incline"
+          name="price"
+          [ngModel]="product.price"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label incline" for="">Image Url: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="image"
+          [ngModel]="product.image"
+          required
+        />
+      </div>
+      <div class="buttonHolder">
+        <button class="btn btn-outline-success" *ngIf="productForm.valid">Create</button>
+        <button class="btn btn-outline-danger" routerLink="/products">Cancel</button>
+      </div>
+    </form>
+  </fieldset>
+</section>

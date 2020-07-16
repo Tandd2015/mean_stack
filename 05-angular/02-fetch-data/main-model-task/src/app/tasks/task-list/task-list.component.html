@@ -1,0 +1,41 @@
+
+<section class="books">
+    <fieldset>
+      <div class="row align">
+        <div class="col">
+          <h1>All Books</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Task Title</th>
+                <th scope="col">Task Description</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Updated At</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+              <tr
+                *ngFor="let task of tasks"
+                (click)="onSelect(task)"
+                [routerLink]="task._id"
+              >
+                <th scope="row">{{ task._id }}</th>
+                <td>{{ task.taskTitle }}</td>
+                <td>{{ task.taskDescription }}</td>
+                <td>{{ task.createdAt }}</td>
+                <td>{{ task.updatedAt }}</td>
+                <td (click)="onEvent($event)">
+                  <button class="btn btn-outline-danger two" (click)="onDelete(task)">Delete</button>
+                  <button class="btn btn-outline-warning two" [routerLink]="[task._id, 'update']">Update</button>
+                </td>
+              </tr>
+          </table>
+        </div>
+      </div>
+    </fieldset>
+</section>

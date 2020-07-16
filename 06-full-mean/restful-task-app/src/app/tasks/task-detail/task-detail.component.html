@@ -1,0 +1,51 @@
+<section class="selectedPet">
+  <fieldset>
+    <div *ngIf='tasksErrors.length' class="row six">
+      <ul class="alert alert-danger">
+        <li *ngFor='let error of tasksErrors'>{{ error }}</li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <legend class="four">Displaying One Task</legend>
+        <div class="row nine">
+          <p class="col-md-4">Task Title: </p>
+          <p class="col-md-3">{{ task?.title }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Description: </p>
+          <p class="col-md-3">{{ task?.description }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Created At: </p>
+          <p class="col-md-3">{{ task?.createdAt }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Updated At: </p>
+          <p class="col-md-3">{{ task?.updatedAt }}</p>
+        </div>
+        <div class="row nine">
+          <p class="col-md-4">Task Completed Count: </p>
+          <p class="col-md-3">{{ task?.completed }}</p>
+        </div>
+        <div *ngIf="task?.noteOne" class="row nine">
+          <p class="col-md-4">Task Note One: </p>
+          <p class="col-md-3">{{ task?.noteOne }}</p>
+        </div>
+        <div *ngIf="task?.noteTwo" class="row nine">
+          <p class="col-md-4">Task Note Two: </p>
+          <p class="col-md-3">{{ task?.noteTwo }}</p>
+        </div>
+        <div *ngIf="task?.noteThree" class="row nine">
+          <p class="col-md-4">Task Note Three: </p>
+          <p class="col-md-3">{{ task?.noteThree }}</p>
+        </div>
+        <div class="row nine">
+          <button class="btn btn-outline-warning" [routerLink]="['edit']">Edit</button>
+          <button class="btn btn-outline-success" (click)='onDelete(task)'>Remove This Task</button>
+          <button class="btn btn-outline-primary" *ngIf='!isAuthed' (click)='addComplete(task)'>Check This Task Complete</button>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</section>

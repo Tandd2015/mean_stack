@@ -1,0 +1,33 @@
+<section class="pets">
+  <div class="row">
+    <h3>These pets are looking for a home!</h3>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let pet of pets"
+            (click)="onSelect(pet)"
+            [routerLink]="pet._id"
+          >
+            <th hidden scope="row">{{ pet._id }}</th>
+            <td>{{ pet.name }}</td>
+            <td>{{ pet.type }}</td>
+            <td (click)="onEvent($event)">
+              <button class="btn btn-outline-danger two" [routerLink]="[pet._id]" >Details</button> <!-- if you have multiple click events they bubble up and all run must prevent that action  -->
+              <button class="btn btn-outline-warning two" [routerLink]="[pet._id, 'edit']" >Edit</button> <!-- you do not want a click event on this button unless it is a nested component - you want to route somewhere else in this instance-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

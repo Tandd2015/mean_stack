@@ -1,0 +1,103 @@
+<section>
+  <fieldset>
+    <div *ngIf='tasksErrors.length' class="row six">
+      <ul class="alert alert-danger">
+        <li *ngFor='let error of tasksErrors'>{{ error }}</li>
+      </ul>
+    </div>
+    <legend>Create A New Task</legend>
+    <form (submit)="onSubmit($event, taskEditForm)" #taskEditForm="ngForm" autocomplete="off">
+      <!-- {{ taskEditForm.valid | json}} -->
+      <div class="form-group row">
+        <label
+          for="title"
+          class="col-md-1 col-form-label incline"
+        >Title: </label>
+        <input
+          class="form-control col-md-5 incline"
+          type="text"
+          name="title"
+          [ngModel]="task?.title"
+          minlength="1"
+          maxlength="257"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="description"
+          class="col-md-2 col-form-label incline"
+        >Description: </label>
+        <input
+          class="form-control col-md-5 incline"
+          type="text"
+          name="description"
+          [ngModel]="task?.description"
+          minlength="1"
+          required
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteOne"
+          class="col-md-1 col-form-label incline"
+        >Completed Status: </label>
+        <input
+          type="number"
+          class="form-control col-md-5 incline"
+          name="completed"
+          [ngModel]="task?.completed"
+        />
+      </div>
+      <div class="form-group row">
+        <legend class="col">Notes (Optional): </legend>
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteOne"
+          class="col-md-1 col-form-label incline"
+        >Note One: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteOne"
+          [ngModel]="task?.noteOne"
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteTwo"
+          class="col-md-1 col-form-label incline"
+        >Note Two: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteTwo"
+          [ngModel]="task?.noteTwo"
+        />
+      </div>
+      <div class="form-group row">
+        <label
+          for="noteThree"
+          class="col-md-1 col-form-label incline"
+        >Note Three: </label>
+        <input
+          type="text"
+          class="form-control col-md-5 incline"
+          name="noteThree"
+          [ngModel]="task?.noteThree"
+        />
+      </div>
+      <!-- alternate way but less secure -->
+      <!-- <button [hidden]="bookForm.invalid">Submit</button> -->
+      <div class="form-group row">
+        <div class="col-md-2 three">
+          <button class="btn btn-outline-success" *ngIf='taskEditForm.valid'>Submit</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary" routerLink="/">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</section>

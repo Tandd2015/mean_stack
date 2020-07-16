@@ -1,0 +1,29 @@
+<section class="selectedTask">
+    <fieldset>
+      <div class="row">
+        <div class="col-md-8">
+            <legend class="four">Displaying One Task</legend>
+            <div class="row nine">
+              <p class="col-md-3 inline">ID:</p>
+              <p class="col-md-3 inline">{{ task?._id }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Task Title: </p>
+              <p class="col-md-3">{{ task?.taskTitle }}</p>
+            </div><!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            <div class="row nine">
+              <p class="col-md-3">Task Description: </p>
+              <p class="col-md-3">{{ task?.taskDescription }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Created at: </p>
+              <p class="col-md-3">{{ task?.createdAt }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+            <div class="row nine">
+              <p class="col-md-3">Updated at: </p>
+              <p class="col-md-3">{{ task?.updatedAt }}</p> <!-- ? = safe navigation operator =  it evaluate property/object on the left if it is falsey-null/undefinded = it will not evaluate the property/object on the right -->
+            </div>
+        </div>
+      </div>
+    </fieldset>
+  </section>
